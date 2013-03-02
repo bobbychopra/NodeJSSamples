@@ -1,5 +1,15 @@
 extends layout
 
+block head
+  script(src='/socket.io/socket.io.js')
+
 block content
   h1= title
   p Welcome to #{title}
+  #time Waiting to get time ...
+
+  script
+    var socket = io.connect('http://localhost');
+    socket.on('updatetime', function(data){
+      document.getElementById('time').innerHTML = data.time;
+    });
