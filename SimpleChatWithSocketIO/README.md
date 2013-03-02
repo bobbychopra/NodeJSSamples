@@ -14,4 +14,5 @@ this is a simple project that shows a real-time chat between clients
 - node_modules/express/bin/express --css stylus -s
 - cd node_modules/
 - npm install
-
+- cd ..
+- node_modules/nodemon/nodemon.js app.js (I didn't install nodemon globally)

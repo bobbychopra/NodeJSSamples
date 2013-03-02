@@ -1,5 +1,43 @@
 extends layout
 
+block head
+  script(src='http://code.jquery.com/jquery-1.9.1.min.js')
+  script(src='/socket.io/socket.io.js')
+
 block content
   h1= title
   p Welcome to #{title}
+
+  label Username: 
+    input(name='username', id='username')
+  label Message:
+    input(name='message', id='message')
+  input(type='button', value='Send', id='send')
+
+  p Messages
+    div#chat
+
+  script
+    $(document).ready(function() {
+      var user = $('#username');
+      var message = $('#message');
+      var Messages = $('#chat');
+
+      var socket = io.connect('http://localhost');
+
+      socket.on('messageupdate', function(data) {
+        addMessage(data);
+      });
+
+      $('#send').click(function sendMessage() {
+        var m = { user: user.val(), message: message.val() };
+        socket.emit('newmessage', m);
+        m["time"] = Date();
+        addMessage(m);
+      });
+
+      function addMessage(data){
+        var msg = '<div class="message"><i>' + data.time + '</i> <strong>' + data.user + ': </strong>' + data.message + '</div>';
+        Messages.html(msg + Messages.html());
+      };
+    });
