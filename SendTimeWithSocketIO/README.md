@@ -16,3 +16,7 @@ packages.
 - npm install express 
 - npm install socket.io
 - node_modules/express/bin/express --css stylus -s
+- cd node_modules
+- npm install
+- cd ..
+
