@@ -13,5 +13,6 @@ packages.
 ### Steps taken to create this:
 - mkdir SendTimeWithSocketIO
 - cd SendTimeWithSocketIO
-- npm install express socket.io
+- npm install express 
+- npm install socket.io
 - node_modules/express/bin/express --css stylus -s
