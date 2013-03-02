@@ -39,7 +39,9 @@ io = io.listen(server);
 
 io.sockets.on('connection', function(socket)
 {
-  socket.emit('updatetime', { time: Date() });
+  setInterval(function(){
+    socket.emit('updatetime', { time: Date() });
+  }, 1000);
 });
 
 server.listen(app.get('port'), function(){
