@@ -9,3 +9,10 @@ exports.index = function(req, res){
   res.render('index', { title: 'Tasks', tasks: docs });
   });
 };
+
+exports.addtask = function(req, res){
+  var taskname = req.body.taskname;
+  console.log('Task Name to Add: ' + taskname);
+  db.tasks.insert({name: taskname});
+  res.redirect('/');
+}

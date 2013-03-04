@@ -4,6 +4,12 @@ block content
   h1= title
   p Welcome to #{title}
 
+  p 
+  form(action='/addtask', method='post')
+    label Add New Task:
+    input(name='taskname', id='taskname')
+    input(type='submit', value='Add')
+
   p Tasks
   ul
   each task in tasks
